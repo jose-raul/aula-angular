@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Items List</h1>
+    <div class="row" *ngIf="items.length > 0">
+      <div class="col-md-4 mb-4" *ngFor="let item of items">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">Description: {{ item.description || 'N/A' }}</p>
+            <button class="btn btn-danger" (click)="deleteItem(item.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <h2 class="mt-5">Add New Item</h2>
+    <form (ngSubmit)="addItem()" class="row g-3">
+      <div class="col-md-6">
+        <label for="item-name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="item-name" [(ngModel)]="newItem.name" name="name" required>
+      </div>
+      <div class="col-md-6">
+        <label for="item-description" class="form-label">Description</label>
+        <input type="text" class="form-control" id="item-description" [(ngModel)]="newItem.description" name="description">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Add Item</button>
+      </div>
+    </form>
+  </div>
+  
